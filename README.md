@@ -6,6 +6,12 @@ Guía interactiva para quienes integran una Mesa electoral en las elecciones a C
 
 > No es una aplicación oficial. Resume el «Manual de instrucciones para las personas que integran las Mesas electorales» del Ministerio del Interior, supervisado por la Junta Electoral Central. Cada paso cita la página del manual de la que sale. Ante la duda, manda el manual en papel y la Junta Electoral de Zona.
 
+<p>
+  <img src="docs/ahora.png" alt="Pantalla «Ahora»: son las 8:42, toca constituir la Mesa" width="260">
+  <img src="docs/asistente.png" alt="Asistente «¿Puede votar esta persona?» con el resultado sellado" width="260">
+  <img src="docs/recuento.png" alt="Contador del escrutinio" width="260">
+</p>
+
 ## Qué hace
 
 - **Ahora.** Mira el reloj y enseña la parte de la jornada que toca (constitución a las 8:00, votación a las 9:00, cierre a las 20:00, escrutinio y entrega de sobres), con sus pasos y quién hace cada uno. Los tuyos van resaltados y se pueden marcar como hechos.
