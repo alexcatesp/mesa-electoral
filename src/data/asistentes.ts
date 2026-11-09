@@ -160,7 +160,7 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'no',
         titulo: 'La tarjeta censal no sirve para esto',
         texto: [
-          'La tarjeta que todos los electores reciben en casa solo informa de la Mesa que les toca. No es una certificación censal de alta. Si no figura en vuestro censo, puede que le corresponda otra Mesa: comprobad la tarjeta y la lista del callejero.',
+          'La tarjeta que todos los electores reciben en casa solo informa de la Mesa que les toca. No es una certificación censal de alta. En la propia tarjeta se indica la Mesa en la que está inscrita.',
         ],
         pag: '8 y 25',
       },
@@ -178,7 +178,7 @@ export const ASISTENTES: Asistente[] = [
         titulo: 'No puede votar en la Mesa',
         texto: [
           'Nadie vota sin estar en las listas del censo, salvo con certificación censal de alta, sentencia judicial o siendo interventor de la Mesa.',
-          'Puede reclamar ante la Mesa por la negativa a dejarle votar, y llevar sus consultas a la Junta Electoral de Zona. Si insiste, la Presidencia le invita a deponer su actitud y, si no lo hace, puede pedir a los agentes de la autoridad que abandone el local.',
+          'Sus consultas puede presentarlas ante la Junta Electoral de Zona. Si insiste ante la Mesa, la Presidencia le invita a deponer su actitud y, si no lo hace, puede pedir a los agentes de la autoridad que abandone el local.',
         ],
         pag: '8, 25 y 26',
       },
@@ -210,6 +210,7 @@ export const ASISTENTES: Asistente[] = [
           { texto: 'Un sobre alterado', ir: 'nulo-alterado' },
           { texto: 'Una papeleta con algo escrito, tachado o cambiado', ir: 'c-marcas' },
           { texto: 'Una papeleta de una candidatura retirada', ir: 'blanco-retirada' },
+          { texto: 'Otra cosa', ir: 'otro-caso' },
         ],
       },
       'c-varias': {
@@ -240,6 +241,7 @@ export const ASISTENTES: Asistente[] = [
           { texto: 'Sobre o papeleta que no son del modelo oficial', ir: 'nulo-modelo' },
           { texto: 'Un sobre alterado', ir: 'nulo-alterado' },
           { texto: 'Una papeleta con nombres cambiados, tachados o con frases', ir: 'nulo-modificada' },
+          { texto: 'Otra cosa', ir: 'otro-caso' },
         ],
       },
       's-cuantos': {
@@ -251,6 +253,15 @@ export const ASISTENTES: Asistente[] = [
           { texto: 'El máximo permitido aquí, o menos', ir: 'valido-senado' },
           { texto: 'Más del máximo', ir: 'nulo-senado' },
         ],
+      },
+      'otro-caso': {
+        tipo: 'resultado',
+        veredicto: 'ojo',
+        titulo: 'El manual no recoge ese caso',
+        texto: [
+          'Lo decide la Mesa. Podéis consultar a la persona representante de la Administración o a la Junta Electoral de Zona. Si alguien protesta o reclama, la Mesa resuelve por mayoría y la papeleta no se destruye: se firma, se une al acta de sesión y va en el sobre n.º 1.',
+        ],
+        pag: '13',
       },
       valido: { tipo: 'resultado', veredicto: 'si', titulo: 'Voto válido', texto: ['Cuenta para la candidatura de la papeleta.'], pag: '11 y 12' },
       'valido-varias': {

@@ -20,7 +20,7 @@ Guía interactiva para quienes integran una Mesa electoral en las elecciones a C
 - **Interrupciones.** Apunta cuándo se para y se reanuda la votación y calcula la nueva hora de cierre.
 - **Sobres, accesibilidad e información general.** Qué va en cada uno de los tres sobres, cómo atender a votantes con discapacidad y normas de orden público.
 
-Funciona sin cobertura una vez abierta (PWA). No tiene servidor ni cuentas: las marcas y el recuento se guardan solo en el navegador.
+Funciona sin cobertura desde la primera vez que se abre (PWA). No tiene servidor ni cuentas: las marcas y el recuento se guardan solo en el navegador.
 
 ## Desarrollo
 
@@ -45,7 +45,7 @@ La app se compila para servirse en `/elecciones/`. Para otra ruta: `BASE=/otra/ 
 | `src/data/incidencias.ts` | Incidencias y soluciones (parte II del manual) |
 | `src/data/info.ts` | Accesibilidad e información general |
 | `src/vistas/` | Pantallas: jornada, dudas, recuento y el resto |
-| `public/sw.js` | Service worker para el uso sin conexión |
+| `src/sw.js` | Plantilla del service worker; `vite.config.ts` la completa al compilar |
 
 Todo el contenido son datos con tipos (`src/data/tipos.ts`). Para otras elecciones basta con cambiar esos ficheros y la fecha en `src/util.ts`.
 

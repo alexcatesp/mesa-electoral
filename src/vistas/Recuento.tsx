@@ -62,15 +62,27 @@ export function Recuento() {
       const historial = d.historial ?? [];
       const i = historial.map((h) => h.eleccion).lastIndexOf(eleccion);
       if (i < 0) return d;
-      return { ...d, [eleccion]: { ...historial[i].urna, votantes: d[eleccion].votantes }, historial: historial.filter((_, j) => j !== i) };
+      // Se recuperan los recuentos, no la lista de nombres: lo añadido o quitado después se respeta.
+      const antes = historial[i].urna;
+      const actual = d[eleccion];
+      const lineas = [
+        ...actual.lineas.map((l) => ({ ...l, votos: antes.lineas.find((a) => a.id === l.id)?.votos ?? 0 })),
+        ...antes.lineas.filter((a) => a.votos > 0 && !actual.lineas.some((l) => l.id === a.id)),
+      ];
+      return { ...d, [eleccion]: { ...antes, lineas, votantes: actual.votantes }, historial: historial.filter((_, j) => j !== i) };
     });
   const hayDeshacer = datos.historial.some((h) => h.eleccion === eleccion);
 
   const anadir = () => {
     const nombre = nuevo.trim();
     if (!nombre) return;
-    cambiarUrna((u) => ({ ...u, lineas: [...u.lineas, { id: Math.max(0, ...u.lineas.map((l) => l.id)) + 1, nombre, votos: 0 }] }), false);
+    cambiarUrna((u) => ({ ...u, lineas: [...u.lineas, { id: Math.max(Date.now(), ...u.lineas.map((l) => l.id + 1)), nombre, votos: 0 }] }), false);
     setNuevo('');
+  };
+  /** Quita una línea añadida por error. Solo se ofrece mientras no tiene votos. */
+  const quitar = (id: number) => {
+    cambiarUrna((u) => ({ ...u, lineas: u.lineas.filter((l) => l.id !== id) }), false);
+    setMarcados((m) => m.filter((x) => x !== id));
   };
   const sumar = (id: number, n: number) =>
     cambiarUrna((u) => ({ ...u, lineas: u.lineas.map((l) => (l.id === id ? { ...l, votos: Math.max(0, l.votos + n) } : l)) }));
@@ -92,7 +104,7 @@ export function Recuento() {
   const maximo = censo === null ? null : censo + certificaciones + interventores;
 
   let textoSenado = 'Anotar voto en blanco (ninguno marcado)';
-  if (marcados.length > datos.maxSenado) textoSenado = `Anotar voto nulo (más de ${datos.maxSenado} marcados)`;
+  if (marcados.length > datos.maxSenado) textoSenado = `Anotar voto nulo (más de ${datos.maxSenado} ${datos.maxSenado === 1 ? 'marcado' : 'marcados'})`;
   else if (marcados.length > 0) textoSenado = `Anotar papeleta con ${marcados.length} ${marcados.length === 1 ? 'marca' : 'marcas'}`;
 
   return (
@@ -140,9 +152,15 @@ export function Recuento() {
                 <span className="linea-votos">{l.votos}</span>
                 <span className="linea-mas" aria-hidden="true">+1</span>
               </button>
-              <button type="button" className="linea-resta" onClick={() => sumar(l.id, -1)} aria-label={`Restar un voto a ${l.nombre}`} disabled={l.votos === 0}>
-                −1
-              </button>
+              {l.votos === 0 ? (
+                <button type="button" className="linea-resta" onClick={() => quitar(l.id)} aria-label={`Quitar ${l.nombre} de la lista`}>
+                  Quitar
+                </button>
+              ) : (
+                <button type="button" className="linea-resta" onClick={() => sumar(l.id, -1)} aria-label={`Restar un voto a ${l.nombre}`}>
+                  −1
+                </button>
+              )}
             </li>
           ))}
         </ul>
@@ -166,6 +184,11 @@ export function Recuento() {
                     <span className="linea-nombre">{l.nombre}</span>
                     <span className="linea-votos">{l.votos}</span>
                   </button>
+                  {l.votos === 0 && (
+                    <button type="button" className="linea-resta" onClick={() => quitar(l.id)} aria-label={`Quitar ${l.nombre} de la lista`}>
+                      Quitar
+                    </button>
+                  )}
                 </li>
               );
             })}

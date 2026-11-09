@@ -147,7 +147,7 @@ h3 { font-size: 1.0625rem; }
 /* Casilla de impreso */
 .casilla { flex: none; position: relative; width: 2.75rem; height: 2.75rem; display: grid; place-items: center; cursor: pointer; }
 .casilla input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.casilla-caja { position: relative; width: 1.625rem; height: 1.625rem; border: 2px solid var(--tinta); border-radius: 2px; background: var(--hoja); }
+.casilla-caja { pointer-events: none; position: relative; width: 1.625rem; height: 1.625rem; border: 2px solid var(--tinta); border-radius: 2px; background: var(--hoja); }
 .casilla-caja::before, .casilla-caja::after { content: ''; position: absolute; left: 50%; top: 50%; width: 135%; height: 3px; border-radius: 3px; background: var(--boli); transform: translate(-50%, -50%) rotate(47deg) scaleX(0); transition: transform 0.14s ease-out; }
 .casilla-caja::after { transform: translate(-50%, -50%) rotate(-43deg) scaleX(0); transition-delay: 0.08s; }
 .casilla input:checked + .casilla-caja::before { transform: translate(-50%, -50%) rotate(47deg) scaleX(1); }
@@ -202,7 +202,8 @@ input[type='time'], input[type='number'], input[type='search'], input:not([type]
 .lista-enlaces span { font-size: 0.9375rem; color: var(--tinta-suave); }
 @media (min-width: 40rem) { .lista-asistentes { grid-template-columns: 1fr 1fr; } }
 
-.plegable { background: var(--hoja); border: 1.5px solid var(--linea); border-radius: var(--radio); margin-top: 0.5rem; }
+/* margen para que la barra superior no tape una incidencia enlazada */
+.plegable { scroll-margin-top: 0.75rem; background: var(--hoja); border: 1.5px solid var(--linea); border-radius: var(--radio); margin-top: 0.5rem; }
 .plegable summary { padding: 0.75rem 1rem; font-weight: 700; line-height: 1.3; cursor: pointer; }
 .plegable[open] summary { border-bottom: 1.5px solid var(--linea); }
 .plegable-cuerpo { padding: 0.875rem 1rem; display: grid; gap: 0.625rem; }
@@ -261,13 +262,13 @@ input[type='time'], input[type='number'], input[type='search'], input:not([type]
 @media (min-width: 40rem) { .campos { grid-template-columns: 1fr 1fr; align-items: end; } }
 
 .lineas { display: grid; gap: 0.375rem; margin-top: 0.75rem; }
-.lineas li { display: flex; gap: 0.375rem; }
-.linea-suma { flex: 1; display: flex; align-items: center; gap: 0.75rem; min-height: 3.5rem; padding: 0.5rem 0.875rem; background: var(--hoja); border: 2px solid var(--tinta); border-radius: var(--radio); text-align: left; }
+.lineas li { display: flex; gap: 0.375rem; min-width: 0; }
+.linea-suma { flex: 1; min-width: 0; display: flex; align-items: center; gap: 0.75rem; min-height: 3.5rem; padding: 0.5rem 0.875rem; background: var(--hoja); border: 2px solid var(--tinta); border-radius: var(--radio); text-align: left; }
 .linea-suma:active { background: var(--boli-suave); }
 .linea-nombre { flex: 1; font-weight: 700; line-height: 1.2; overflow-wrap: anywhere; }
 .linea-votos { font-family: var(--titular); font-weight: 800; font-size: 1.625rem; font-variant-numeric: tabular-nums; }
 .linea-mas { color: var(--boli); font-weight: 700; }
-.linea-resta { width: 3.25rem; background: none; border: 2px solid var(--linea); border-radius: var(--radio); color: var(--tinta-suave); font-weight: 700; }
+.linea-resta { flex: none; min-width: 3.25rem; padding-inline: 0.5rem; background: none; border: 2px solid var(--linea); border-radius: var(--radio); color: var(--tinta-suave); font-weight: 700; }
 .linea-resta:disabled { opacity: 0.4; }
 .linea-caja { flex: none; width: 1.5rem; height: 1.5rem; border: 2px solid var(--tinta); border-radius: 2px; }
 .lineas-senado .linea-suma[aria-pressed='true'] { border-color: var(--boli); background: var(--boli-suave); }

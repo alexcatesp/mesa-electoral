@@ -6,6 +6,11 @@ import '@fontsource-variable/archivo/wdth.css';
 import './estilos.css';
 import { App } from './App';
 
+// «/elecciones» (sin barra final) queda fuera del ámbito del service worker: sin esto no funcionaría sin cobertura.
+if (window.location.pathname + '/' === import.meta.env.BASE_URL) {
+  window.location.replace(import.meta.env.BASE_URL + window.location.search + window.location.hash);
+}
+
 createRoot(document.getElementById('raiz')!).render(
   <StrictMode>
     <App />

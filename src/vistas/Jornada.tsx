@@ -19,7 +19,7 @@ function duracion(min: number): string {
   return m ? `${h} h ${m} min` : `${h} h`;
 }
 
-function Cabecera({ fase, ahora, minProrroga, estado }: { fase: Fase; ahora: Date; minProrroga: number; estado: 'falta' | 'hoy' | 'pasado' }) {
+function Cabecera({ fase, ahora, minProrroga, estado, paradaDesde }: { fase: Fase; ahora: Date; minProrroga: number; estado: 'falta' | 'hoy' | 'pasado'; paradaDesde?: string }) {
   const m = minutosDesdeElDia(ahora);
   if (estado === 'falta') {
     const dias = Math.ceil((DIA.getTime() - ahora.getTime()) / 86400000);
@@ -48,7 +48,10 @@ function Cabecera({ fase, ahora, minProrroga, estado }: { fase: Fase; ahora: Dat
   if (fase.id === 'votacion') {
     despues = `Se cierra a las ${hhmm(cierre)}, dentro de ${duracion(cierre - m)}.`;
     if (minProrroga > 0) despues += ` Incluye ${duracion(minProrroga)} de prórroga.`;
+    if (paradaDesde) despues = `La votación está interrumpida desde las ${paradaDesde.replace(/^0/, '')}. Cuando se reanude, apúntalo abajo para calcular la hora de cierre.`;
   }
+  if (fase.id === 'cierre' || fase.id === 'escrutinio') despues = 'Marca cada paso al terminarlo y la guía pasará sola a la parte siguiente.';
+  if (fase.id === 'entrega') despues = 'Es lo último de la jornada.';
   return (
     <header className="ahora">
       <p className="ahora-cifra">
@@ -96,7 +99,7 @@ function Interrupciones({ lista, cambiar, ahora }: { lista: Interrupcion[]; camb
                 Dura más de una hora: la votación puede suspenderse. <a href="#/dudas/interrupcion">Ver qué hacer</a>
               </p>
             )}
-            {x.fin && d <= 0 && <p className="interrupcion-nota">La hora de reanudación debe ser posterior a la de parada.</p>}
+            {x.fin && d < 0 && <p className="interrupcion-nota">La hora de reanudación debe ser posterior a la de parada.</p>}
           </div>
         );
       })}
@@ -118,7 +121,9 @@ export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
   const [interrupciones, setInterrupciones] = useGuardado<Interrupcion[]>('interrupciones', []);
 
   const minProrroga = prorroga(interrupciones);
-  const toca = faseQueToca(ahora, hechos, minProrroga);
+  // Con una interrupción sin cerrar, la votación sigue abierta aunque pasen las 20:00.
+  const parada = interrupciones.find((i) => i.ini && !i.fin);
+  const toca = faseQueToca(ahora, hechos, parada ? 24 * 60 : minProrroga);
   const fase = FASES.find((f) => f.id === faseVista) ?? FASES.find((f) => f.id === toca.fase)!;
   const esLaQueToca = fase.id === toca.fase;
   const siguiente = SIGUIENTE[fase.id] && FASES.find((f) => f.id === SIGUIENTE[fase.id]);
@@ -130,13 +135,14 @@ export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
     if (parada && tira.current) tira.current.scrollLeft = parada.offsetLeft - (tira.current.clientWidth - parada.offsetWidth) / 2;
   }, [fase.id]);
 
-  const marcables = fase.bloques.filter((b) => b.marcable).flatMap((b) => b.pasos);
+  const bloques = fase.bloques.filter((b) => !b.soloPara || b.soloPara.includes(rol));
+  const marcables = bloques.filter((b) => b.marcable).flatMap((b) => b.pasos);
   const nHechos = marcables.filter((p) => hechos[p.id]).length;
 
   return (
     <>
       {esLaQueToca ? (
-        <Cabecera fase={fase} ahora={ahora} minProrroga={minProrroga} estado={toca.estado} />
+        <Cabecera fase={fase} ahora={ahora} minProrroga={minProrroga} estado={toca.estado} paradaDesde={parada?.ini} />
       ) : (
         <header className="ahora ahora-otra">
           <p className="ahora-frase">
@@ -178,7 +184,7 @@ export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
           </label>
         </div>
 
-        {fase.bloques.map((bloque, i) => {
+        {bloques.map((bloque, i) => {
           const pasos = bloque.pasos.filter((p) => !soloMio || teToca(rol, p.quien));
           if (pasos.length === 0) return null;
           return (
@@ -202,7 +208,7 @@ export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
           );
         })}
 
-        {soloMio && fase.bloques.every((b) => b.pasos.every((p) => !teToca(rol, p.quien))) && (
+        {soloMio && bloques.every((b) => b.pasos.every((p) => !teToca(rol, p.quien))) && (
           <p className="vacio">En esta parte no tienes tareas propias. Quita el filtro para ver lo que hace el resto de la Mesa.</p>
         )}
 

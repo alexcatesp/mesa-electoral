@@ -189,6 +189,35 @@ export const FASES: Fase[] = [
           },
         ],
       },
+      {
+        titulo: 'Lo que puedes hacer tú',
+        ordenado: false,
+        marcable: false,
+        soloPara: ['interventor', 'apoderado'],
+        pasos: [
+          {
+            id: 'r-c-identificarse',
+            titulo: "Identificarte ante la Mesa",
+            quien: ['apoderado'],
+            texto: ["Enseña tus credenciales y tu documento de identidad. Como apoderado puedes entrar libremente en todos los locales electorales."],
+            pag: '20',
+          },
+          {
+            id: 'r-c-copia',
+            titulo: "Pedir copia del acta de constitución",
+            quien: ['interventor','apoderado'],
+            texto: ["Se entrega una sola copia por candidatura. Si la Presidencia la rehúsa o la demora, puedes formular una protesta firmada, por duplicado: un ejemplar se une al expediente electoral y el otro lo remites tú a la Junta Electoral competente para el escrutinio general."],
+            pag: '7 y 23',
+          },
+          {
+            id: 'r-c-suplir',
+            titulo: "Actuar como interventor si tu candidatura no tiene ninguno",
+            quien: ['apoderado'],
+            texto: ["Si no hay interventores de tu candidatura en la Mesa, puedes actuar como tal y participar en sus deliberaciones, con voz pero sin voto."],
+            pag: '20',
+          },
+        ],
+      },
     ],
   },
   {
@@ -306,6 +335,42 @@ export const FASES: Fase[] = [
           },
         ],
       },
+      {
+        titulo: 'Lo que puedes hacer tú',
+        ordenado: false,
+        marcable: false,
+        soloPara: ['interventor', 'apoderado'],
+        pasos: [
+          {
+            id: 'r-v-observar',
+            titulo: "Observar la votación, reclamar y pedir certificaciones",
+            quien: ['interventor','apoderado'],
+            texto: ["Puedes examinar cómo se desarrolla la votación, formular reclamaciones y protestas y pedir certificaciones. Los interventores, además, participan en las deliberaciones de la Mesa con voz pero sin voto."],
+            pag: '19 y 20',
+          },
+          {
+            id: 'r-v-papeletas',
+            titulo: "Reponer las papeletas de tu candidatura si se acaban",
+            quien: ['interventor','apoderado'],
+            texto: ["Si faltan papeletas de tu candidatura y puedes suministrarlas, la votación no tiene que interrumpirse."],
+            pag: '23',
+          },
+          {
+            id: 'r-v-emblemas',
+            titulo: "Llevar solo una identificación discreta",
+            quien: ['interventor','apoderado'],
+            texto: ["Puedes llevar emblemas o adhesivos de tu formación, únicamente para identificar a la candidatura. No se admite un uniforme o vestimenta diseñada por la formación, ni indumentaria con símbolos partidistas."],
+            pag: '19',
+          },
+          {
+            id: 'r-v-votar',
+            titulo: "Votar solo donde te corresponde",
+            quien: ['apoderado'],
+            texto: ["Como apoderado no votas en una Mesa si no figuras en su censo. Votas en la tuya, como cualquier elector."],
+            pag: '20',
+          },
+        ],
+      },
     ],
   },
   {
@@ -373,6 +438,21 @@ export const FASES: Fase[] = [
           },
         ],
       },
+      {
+        titulo: 'Lo que puedes hacer tú',
+        ordenado: false,
+        marcable: false,
+        soloPara: ['interventor', 'apoderado'],
+        pasos: [
+          {
+            id: 'r-z-presenciar',
+            titulo: "Presenciar el cierre y la entrada de los votos por correo",
+            quien: ['apoderado'],
+            texto: ["Puedes examinar el desarrollo de estas operaciones y formular reclamaciones y protestas."],
+            pag: '20',
+          },
+        ],
+      },
     ],
   },
   {
@@ -426,7 +506,7 @@ export const FASES: Fase[] = [
             titulo: 'Preguntar si hay protestas o reclamaciones',
             quien: ['presidencia'],
             texto: [
-              'Si las hay, la Mesa resuelve por mayoría de sus integrantes. Pueden reclamar interventores, apoderados y representantes de candidatura. El público asistente, no.',
+              'Si las hay, la Mesa resuelve por mayoría de sus integrantes. Pueden formularlas interventores y apoderados. El público asistente, no.',
             ],
             pag: '13 y 26',
           },
@@ -484,6 +564,35 @@ export const FASES: Fase[] = [
           },
         ],
       },
+      {
+        titulo: 'Lo que puedes hacer tú',
+        ordenado: false,
+        marcable: false,
+        soloPara: ['interventor', 'apoderado'],
+        pasos: [
+          {
+            id: 'r-e-ver',
+            titulo: "Ver cada papeleta",
+            quien: ['interventor','apoderado'],
+            texto: ["La Presidencia tiene que enseñar cada papeleta, una vez leída, a los vocales, interventores y apoderados presentes."],
+            pag: '11',
+          },
+          {
+            id: 'r-e-reclamar',
+            titulo: "Protestar o reclamar contra el escrutinio",
+            quien: ['interventor','apoderado'],
+            texto: ["Al terminar el recuento la Presidencia pregunta si hay protestas o reclamaciones. La Mesa resuelve por mayoría y las papeletas reclamadas no se destruyen: se firman y se unen al acta de sesión."],
+            pag: '13',
+          },
+          {
+            id: 'r-e-copias',
+            titulo: "Pedir copia de las actas de escrutinio y de sesión",
+            quien: ['interventor','apoderado'],
+            texto: ["Del acta de escrutinio se entrega una sola copia por candidatura, después de la que recibe la persona representante de la Administración."],
+            pag: '13 y 14',
+          },
+        ],
+      },
     ],
   },
   {
@@ -527,7 +636,7 @@ export const FASES: Fase[] = [
               'La Fuerza Pública acompaña y, si hace falta, facilita el desplazamiento.',
               'El juez o la jueza firma el recibo, que está entre la documentación de la Mesa.',
             ],
-            texto: ['En municipios sin Tribunal de Instancia, se entregan en la Oficina de Justicia que asiste al juez o jueza de paz.'],
+            texto: ['Se entregan en el Tribunal de Instancia, o en la Oficina de Justicia del municipio que asiste al juez o jueza de paz, de la demarcación donde está la Mesa.'],
             pag: '15',
           },
           {
@@ -536,6 +645,28 @@ export const FASES: Fase[] = [
             quien: ['vocal'],
             texto: ['Al menos un vocal se queda hasta que llegue el empleado o la empleada de Correos, que firma el recibo. Con eso termina la jornada.'],
             pag: '16',
+          },
+        ],
+      },
+      {
+        titulo: 'Lo que puedes hacer tú',
+        ordenado: false,
+        marcable: false,
+        soloPara: ['interventor', 'apoderado'],
+        pasos: [
+          {
+            id: 'r-d-acompanar',
+            titulo: "Acompañar a la Presidencia a entregar los sobres 1 y 2",
+            quien: ['interventor'],
+            texto: ["Los interventores que lo deseen pueden ir con la Presidencia al Tribunal de Instancia o a la Oficina de Justicia."],
+            pag: '15',
+          },
+          {
+            id: 'r-d-censo',
+            titulo: "Llevarte la lista del censo de tu candidatura",
+            quien: ['interventor','apoderado'],
+            texto: ["Las listas del censo de la Mesa no salen del local, pero las candidaturas pueden llevarse, al acabar la jornada, las que ya tenían antes de la jornada electoral."],
+            pag: '5',
           },
         ],
       },

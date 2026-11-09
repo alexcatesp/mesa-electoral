@@ -48,6 +48,8 @@ export interface Bloque {
   ordenado: boolean;
   /** true: cada paso se puede marcar como hecho. */
   marcable: boolean;
+  /** Si se indica, el bloque solo se muestra a esos perfiles. */
+  soloPara?: Rol[];
   pasos: Paso[];
 }
 
