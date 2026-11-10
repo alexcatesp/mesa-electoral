@@ -308,3 +308,9 @@ input[type='time'], input[type='number'], input[type='search'], input:not([type]
 /* Aviso de origen: no oficial y hecha con IA */
 .origen { display: grid; gap: 0.625rem; padding: 0.875rem 1rem; background: var(--hoja); border: 2px solid var(--tinta); border-left: 6px solid var(--precinto); border-radius: var(--radio); max-width: 38rem; }
 .pagina > .origen { margin-top: 0.75rem; }
+
+/* ---------- Buscador: extracto y respuesta enlazada ---------- */
+.lista-enlaces .extracto { margin-top: 0.25rem; color: var(--tinta); font-size: 0.9375rem; line-height: 1.4; }
+.respuesta { margin-top: 1rem; padding: 1rem; background: var(--hoja); border: 2px solid var(--tinta); border-radius: var(--radio); display: grid; gap: 0.625rem; max-width: 40rem; }
+.paso, .plegable { scroll-margin-top: 0.75rem; }
+.paso-buscado, .plegable-buscada { outline: 3px solid var(--boli); outline-offset: 2px; }

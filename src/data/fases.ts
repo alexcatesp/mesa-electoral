@@ -159,7 +159,7 @@ export const FASES: Fase[] = [
             ],
             ojo: 'Si falta algún kit, comunicadlo a la Junta Electoral de Zona antes de que empiece la votación.',
             pag: '7 y 18',
-            enlace: { texto: 'Ver cómo es el voto en braille', href: '#/accesibilidad' },
+            enlace: { texto: 'Ver cómo es el voto en braille', href: '#/accesibilidad/braille' },
           },
           {
             id: 'c-local',
@@ -323,7 +323,7 @@ export const FASES: Fase[] = [
             quien: ['presidencia'],
             texto: ['La Presidencia tiene la autoridad exclusiva dentro del local y puede pedir ayuda a las Fuerzas y Cuerpos de Seguridad.'],
             pag: '20 y 21',
-            enlace: { texto: 'Ver las normas de orden público', href: '#/info' },
+            enlace: { texto: 'Ver las normas de orden público', href: '#/info/orden' },
           },
           {
             id: 'v-accesible',

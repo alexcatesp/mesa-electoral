@@ -17,7 +17,7 @@ Guía interactiva para quienes integran una Mesa electoral en las elecciones a C
 ## Qué hace
 
 - **Ahora.** Mira el reloj y enseña la parte de la jornada que toca (constitución a las 8:00, votación a las 9:00, cierre a las 20:00, escrutinio y entrega de sobres), con sus pasos y quién hace cada uno. Los tuyos van resaltados y se pueden marcar como hechos.
-- **Dudas.** Seis asistentes de preguntas y respuestas: si una persona puede votar, si un voto es válido, nulo o en blanco, qué hacer con un sobre de voto por correo, interventores, falta de miembros para constituir la Mesa e interrupción de la votación. Además, las incidencias de la parte II del manual y un buscador.
+- **Dudas.** Seis asistentes de preguntas y respuestas: si una persona puede votar, si un voto es válido, nulo o en blanco, qué hacer con un sobre de voto por correo, interventores, falta de miembros para constituir la Mesa e interrupción de la votación. Además, las incidencias de la parte II del manual y un buscador que lleva directamente a cada respuesta, con un extracto en la lista de resultados.
 - **Recuento.** Contador de votos para Congreso y Senado, con deshacer, comprobación de que los sobres cuadran con los votantes anotados y el texto del anuncio de resultados.
 - **Interrupciones.** Apunta cuándo se para y se reanuda la votación y calcula la nueva hora de cierre.
 - **Sobres, accesibilidad e información general.** Qué va en cada uno de los tres sobres, cómo atender a votantes con discapacidad y normas de orden público.

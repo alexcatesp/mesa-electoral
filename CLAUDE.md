@@ -16,7 +16,8 @@ Guía interactiva no oficial para Mesas electorales (elecciones generales del 29
 
 ## Arquitectura
 - Contenido como datos tipados en `src/data/` (`tipos.ts`, `fases.ts`, `asistentes.ts`, `incidencias.ts`, `info.ts`).
-- Rutas por hash (`useRuta` en `src/util.ts`): `#/`, `#/fase/<id>`, `#/dudas`, `#/dudas/<asistente>`, `#/dudas/incidencia/<id>`, `#/recuento`, `#/sobres`, `#/accesibilidad`, `#/info`, `#/mas`, `#/perfil`, `#/portada`.
+- Rutas por hash (`useRuta` en `src/util.ts`): `#/`, `#/fase/<id>`, `#/fase/<id>/<paso>` (abre y muestra ese paso), `#/dudas`, `#/dudas/<asistente>`, `#/dudas/<asistente>/r/<i.j.k>` (abre el asistente con esas opciones elegidas, es decir, en una respuesta concreta), `#/dudas/incidencia/<id>` (pantalla de la incidencia), `#/recuento`, `#/sobres`, `#/accesibilidad[/<ficha>]`, `#/info[/<ficha>]`, `#/mas`, `#/perfil`, `#/portada`.
+- Buscador (`Dudas.tsx`): un resultado por respuesta, no por sección. Cada camino de cada asistente (`caminosDe`) es un resultado. Todo resultado debe enlazar a su respuesta ya abierta y a la vista; al añadir contenido nuevo, que siga cumpliéndose.
 - Estado en `localStorage` con prefijo `mesa29n:` (`useGuardado`): `portadaVista`, `rol`, `hechos`, `soloMio`, `interrupciones`, `recuento`, `sobres`.
 - `faseQueToca` decide la fase por el reloj; pasadas las 20:00 (más la prórroga) avanza según los pasos marcados. `?ahora=2026-11-29T08:42` simula la hora.
 - El historial de deshacer del recuento vive dentro del mismo estado `recuento`, para que cada pulsación sea atómica. Deshacer recupera recuentos, no la lista de nombres (añadir o quitar una línea no se deshace).

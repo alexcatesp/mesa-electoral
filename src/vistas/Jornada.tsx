@@ -114,7 +114,7 @@ function Interrupciones({ lista, cambiar, ahora }: { lista: Interrupcion[]; camb
   );
 }
 
-export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
+export function Jornada({ rol, faseVista, pasoVisto }: { rol: Rol; faseVista?: string; pasoVisto?: string }) {
   const ahora = useAhora();
   const [hechos, setHechos] = useGuardado<Record<string, boolean>>('hechos', {});
   const [soloMio, setSoloMio] = useGuardado('soloMio', false);
@@ -185,7 +185,8 @@ export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
         </div>
 
         {bloques.map((bloque, i) => {
-          const pasos = bloque.pasos.filter((p) => !soloMio || teToca(rol, p.quien));
+          // El paso al que se llega desde el buscador se muestra aunque esté activo el filtro.
+          const pasos = bloque.pasos.filter((p) => !soloMio || teToca(rol, p.quien) || p.id === pasoVisto);
           if (pasos.length === 0) return null;
           return (
             <div className="bloque" key={i}>
@@ -200,6 +201,7 @@ export function Jornada({ rol, faseVista }: { rol: Rol; faseVista?: string }) {
                     numero={bloque.ordenado ? bloque.pasos.indexOf(p) + 1 : undefined}
                     marcable={bloque.marcable}
                     hecho={Boolean(hechos[p.id])}
+                    buscado={p.id === pasoVisto}
                     alMarcar={(v) => setHechos((h) => ({ ...h, [p.id]: v }))}
                   />
                 ))}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Casilla, Cuerpo, Pag, Volver } from '../componentes';
 import { SOBRES } from '../data/fases';
 import { ACCESIBILIDAD, ACCESIBILIDAD_GENERAL, INFORMACION, type Ficha } from '../data/info';
@@ -74,11 +74,15 @@ export function Sobres() {
   );
 }
 
-function Fichas({ fichas }: { fichas: Ficha[] }) {
+function Fichas({ fichas, abierta }: { fichas: Ficha[]; abierta?: string }) {
+  // Al llegar desde el buscador, la ficha buscada se abre y se lleva a la vista.
+  useEffect(() => {
+    if (abierta) document.getElementById('ficha-' + abierta)?.scrollIntoView({ block: 'start' });
+  }, [abierta]);
   return (
     <>
       {fichas.map((f) => (
-        <details className="plegable" key={f.id}>
+        <details className={f.id === abierta ? 'plegable plegable-buscada' : 'plegable'} key={f.id} id={'ficha-' + f.id} open={f.id === abierta || undefined}>
           <summary>{f.titulo}</summary>
           <div className="plegable-cuerpo">
             <Cuerpo puntos={f.puntos} texto={f.texto} />
@@ -90,7 +94,7 @@ function Fichas({ fichas }: { fichas: Ficha[] }) {
   );
 }
 
-export function Accesibilidad() {
+export function Accesibilidad({ abierta }: { abierta?: string }) {
   return (
     <section className="pagina">
       <Volver href="#/mas">Más</Volver>
@@ -99,7 +103,7 @@ export function Accesibilidad() {
         {ACCESIBILIDAD_GENERAL.map((p) => <li key={p}>{p}</li>)}
       </ul>
       <h2>Según el caso</h2>
-      <Fichas fichas={ACCESIBILIDAD} />
+      <Fichas fichas={ACCESIBILIDAD} abierta={abierta} />
       <p className="entradilla">
         El Ministerio del Interior publica más información en{' '}
         <a href="https://infoelectoral.interior.gob.es/opencms/es/proceso-electoral/accesibilidad-y-procesos-electorales/" target="_blank" rel="noreferrer">
@@ -111,12 +115,12 @@ export function Accesibilidad() {
   );
 }
 
-export function Informacion() {
+export function Informacion({ abierta }: { abierta?: string }) {
   return (
     <section className="pagina">
       <Volver href="#/mas">Más</Volver>
       <h1>Información general</h1>
-      <Fichas fichas={INFORMACION} />
+      <Fichas fichas={INFORMACION} abierta={abierta} />
     </section>
   );
 }

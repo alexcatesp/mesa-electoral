@@ -1,6 +1,6 @@
 import { ROLES, type Rol } from './data/tipos';
 import { esEnsayo, useGuardado, useRuta } from './util';
-import { AsistenteVista, Dudas } from './vistas/Dudas';
+import { AsistenteVista, Dudas, IncidenciaVista } from './vistas/Dudas';
 import { Jornada } from './vistas/Jornada';
 import { Accesibilidad, Informacion, Mas, Perfil, Sobres } from './vistas/Mas';
 import { Portada } from './vistas/Portada';
@@ -48,15 +48,15 @@ export function App() {
   }
 
   let vista;
-  if (seccion === 'dudas' && ruta[1] === 'incidencia') vista = <Dudas incidenciaAbierta={ruta[2]} />;
-  else if (seccion === 'dudas' && ruta[1]) vista = <AsistenteVista key={ruta[1]} id={ruta[1]} />;
+  if (seccion === 'dudas' && ruta[1] === 'incidencia') vista = <IncidenciaVista id={ruta[2] ?? ''} />;
+  else if (seccion === 'dudas' && ruta[1]) vista = <AsistenteVista key={ruta.join('/')} id={ruta[1]} ruta={ruta[2] === 'r' ? ruta[3] : undefined} />;
   else if (seccion === 'dudas') vista = <Dudas />;
   else if (seccion === 'recuento') vista = <Recuento />;
   else if (seccion === 'sobres') vista = <Sobres />;
-  else if (seccion === 'accesibilidad') vista = <Accesibilidad />;
-  else if (seccion === 'info') vista = <Informacion />;
+  else if (seccion === 'accesibilidad') vista = <Accesibilidad abierta={ruta[1]} />;
+  else if (seccion === 'info') vista = <Informacion abierta={ruta[1]} />;
   else if (seccion === 'mas') vista = <Mas rol={rol} />;
-  else vista = <Jornada rol={rol} faseVista={seccion === 'fase' ? ruta[1] : undefined} />;
+  else vista = <Jornada rol={rol} faseVista={seccion === 'fase' ? ruta[1] : undefined} pasoVisto={seccion === 'fase' ? ruta[2] : undefined} />;
 
   return (
     <div className="marco">

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { asistentePorId } from './data/asistentes';
 import { NOMBRE_QUIEN, teToca, type Paso, type Quien, type Rol } from './data/tipos';
 
@@ -51,18 +51,26 @@ interface PasoProps {
   marcable: boolean;
   hecho: boolean;
   alMarcar: (v: boolean) => void;
+  /** Se llega a este paso desde el buscador: se abre y se lleva a la vista. */
+  buscado?: boolean;
 }
 
-export function TarjetaPaso({ paso, rol, numero, marcable, hecho, alMarcar }: PasoProps) {
+export function TarjetaPaso({ paso, rol, numero, marcable, hecho, alMarcar, buscado }: PasoProps) {
   const mio = teToca(rol, paso.quien);
   const [abiertoManual, setAbierto] = useState<boolean | null>(null);
   const tieneDetalle = Boolean(paso.texto || paso.puntos || paso.dices || paso.ojo || paso.asistente || paso.enlace);
   // Las listas de comprobación se ven plegadas, para abarcarlas de un vistazo; lo que se repite con cada votante, abierto.
   const abierto = abiertoManual ?? (mio && !marcable);
   const asistente = paso.asistente ? asistentePorId(paso.asistente) : undefined;
+  const elemento = useRef<HTMLLIElement>(null);
+  useEffect(() => {
+    if (!buscado) return;
+    setAbierto(true);
+    elemento.current?.scrollIntoView({ block: 'start' });
+  }, [buscado]);
 
   return (
-    <li className={`paso${mio ? ' paso-mio' : ''}${hecho ? ' paso-hecho' : ''}`}>
+    <li ref={elemento} className={`paso${mio ? ' paso-mio' : ''}${hecho ? ' paso-hecho' : ''}${buscado ? ' paso-buscado' : ''}`}>
       <div className="paso-cabecera">
         {marcable ? (
           <Casilla marcada={hecho} alCambiar={(v) => { alMarcar(v); setAbierto(null); }} etiqueta={`Hecho: ${paso.titulo}`} />
