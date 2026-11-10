@@ -27,7 +27,7 @@ function Cabecera({ fase, ahora, minProrroga, estado, paradaDesde }: { fase: Fas
       <header className="ahora">
         <p className="ahora-cifra">{dias === 1 ? 'Falta 1 día' : `Faltan ${dias} días`}</p>
         <p className="ahora-frase">
-          La votación es el domingo 29 de noviembre de 2026. Hay que estar en el local electoral a las 8:00.
+          La votación es el domingo 29 de noviembre de 2026. La Mesa y sus suplentes tienen que estar en el local electoral a las 8:00.
         </p>
       </header>
     );

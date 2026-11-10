@@ -3,11 +3,11 @@ export type Rol = 'presidencia' | 'vocal' | 'suplente' | 'interventor' | 'apoder
 export type Quien = Rol | 'mesa';
 
 export const ROLES: { id: Rol; nombre: string; corto: string; resumen: string }[] = [
-  { id: 'presidencia', nombre: 'Presidente o presidenta', corto: 'Presidencia', resumen: 'Diriges la Mesa, recibes los sobres de voto y mantienes el orden.' },
+  { id: 'presidencia', nombre: 'Presidente o presidenta', corto: 'Presidencia', resumen: 'Rellenas el acta de constitución, recibes los sobres de voto y mantienes el orden en el local.' },
   { id: 'vocal', nombre: 'Vocal', corto: 'Vocal', resumen: 'Compruebas la identidad de cada votante y que figura en el censo.' },
-  { id: 'suplente', nombre: 'Suplente', corto: 'Suplente', resumen: 'Acudes a las 8:00 por si falta alguien. Si no, te puedes ir.' },
+  { id: 'suplente', nombre: 'Suplente', corto: 'Suplente', resumen: 'Acudes a las 8:00 por si hay que sustituir a un titular. Si no, puedes irte cuando tu nombre conste en el acta.' },
   { id: 'interventor', nombre: 'Interventor o interventora', corto: 'Interventor/a', resumen: 'Representas a una candidatura en esta Mesa, con voz pero sin voto.' },
-  { id: 'apoderado', nombre: 'Apoderado o apoderada', corto: 'Apoderado/a', resumen: 'Representas a una candidatura y puedes entrar en cualquier Mesa.' },
+  { id: 'apoderado', nombre: 'Apoderado o apoderada', corto: 'Apoderado/a', resumen: 'Representas a una candidatura y puedes acceder a todos los locales electorales.' },
 ];
 
 export const NOMBRE_QUIEN: Record<Quien, string> = {

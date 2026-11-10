@@ -168,7 +168,7 @@ export const ASISTENTES: Asistente[] = [
         tipo: 'resultado',
         veredicto: 'info',
         titulo: 'Vota al final, con la Mesa',
-        texto: ['Los interventores acreditados ante la Mesa votan después del voto por correo, y solo si están censados en la misma circunscripción.'],
+        texto: ['Los interventores acreditados ante la Mesa votan después del voto por correo, y solo si están inscritos en el censo de alguna Mesa de la misma circunscripción.'],
         pag: '10 y 11',
         seguir: { texto: 'Comprobar si puede votar aquí', asistente: 'interventores' },
       },
@@ -573,11 +573,11 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'ojo',
         titulo: 'Avisad a la Junta Electoral de Zona',
         puntos: [
-          'Quienes sí habéis acudido comunicáis lo ocurrido a la Junta Electoral de Zona.',
+          'Quienes sí habéis acudido (o, en su caso, la Autoridad Gubernativa) comunicáis lo ocurrido a la Junta Electoral de Zona.',
           'Además, enviáis por correo certificado una declaración escrita explicando lo sucedido.',
-          'La Junta designa a quienes formarán la Mesa. Puede ordenar que entren electores presentes en el local.',
+          'La Junta designa a quienes han de constituir la Mesa. Puede ordenar que formen parte de ella personas con derecho a voto presentes en el local.',
         ],
-        texto: ['El teléfono de la Junta os lo da la persona representante de la Administración.'],
+        texto: ['El teléfono de la Junta lo proporciona la persona representante de la Administración.'],
         pag: '22',
       },
       diez: {
@@ -585,7 +585,7 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'no',
         titulo: 'La Junta convocará una nueva votación',
         texto: [
-          'Comunicadlo a la Junta Electoral de Zona. Convocará una nueva votación dentro de los dos días siguientes, fijará la convocatoria en la puerta del local y hará nuevos nombramientos para la Mesa.',
+          'Si la Mesa no puede constituirse antes de las 10:00, comunicadlo a la Junta Electoral de Zona. Convocará una nueva votación dentro de los dos días siguientes, fijará la convocatoria en la puerta del local y hará nuevos nombramientos para la Mesa.',
         ],
         pag: '22',
       },

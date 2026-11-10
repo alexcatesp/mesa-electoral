@@ -285,7 +285,7 @@ export function Recuento() {
         <ul>
           <li>Personas en las listas del censo: {censo ?? '—'}</li>
           <li>Certificaciones censales de alta y sentencias: {certificaciones}</li>
-          <li>Personas que han votado: {votantes ?? sobres}</li>
+          <li>Personas que han votado: {votantes ?? '—'}</li>
           <li>Votos nulos: {urna.nulos}</li>
           <li>Votos en blanco: {urna.blancos}</li>
           {urna.lineas.map((l) => (

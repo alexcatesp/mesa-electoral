@@ -14,8 +14,8 @@ export const INCIDENCIAS: Incidencia[] = [
     momento: 'Al formar la Mesa',
     titulo: 'No hay tres personas para constituir la Mesa',
     texto: [
-      'Quienes sí han acudido avisan a la Junta Electoral de Zona y envían por correo certificado una declaración escrita. La Junta designa a los integrantes y puede ordenar que entren electores presentes en el local.',
-      'Si a las 10:00 la Mesa sigue sin constituirse, la Junta convoca nueva votación dentro de los dos días siguientes.',
+      'Quienes sí han acudido (o, en su caso, la Autoridad Gubernativa) comunican lo ocurrido a la Junta Electoral de Zona y, además, envían por correo certificado una declaración escrita explicando lo sucedido. La Junta designa a quienes han de constituir la Mesa y puede ordenar que formen parte de ella personas con derecho a voto presentes en el local.',
+      'Si aun así la Mesa no puede constituirse antes de las 10:00, quienes han acudido lo comunican a la Junta Electoral de Zona, que convocará una nueva votación dentro de los dos días siguientes.',
     ],
     pag: '22',
     asistente: 'constitucion',
@@ -82,7 +82,8 @@ export const INCIDENCIAS: Incidencia[] = [
     momento: 'Durante la votación',
     titulo: 'Hay que suspender la votación',
     texto: [
-      'Solo si la interrupción supera una hora o algo hace imposible votar. La Presidencia recaba el parecer de toda la Mesa y, si puede, consulta a la Junta Electoral de Zona. La decisión va en un escrito razonado, se destruyen las papeletas depositadas en las urnas y se envía copia del escrito a la Junta Electoral Provincial, en mano o por correo certificado.',
+      'La votación puede suspenderse por una interrupción de más de una hora o por cualquier motivo que haga imposible votar. Antes de decidir, la Presidencia recaba el parecer de toda la Mesa y, si es posible, consulta a la Junta Electoral de Zona. La decisión se refleja en un escrito razonado, la Presidencia ordena destruir las papeletas depositadas en las urnas y envía de inmediato copia del escrito a la Junta Electoral Provincial, en mano o por correo certificado.',
+      'La Junta Electoral de Zona convocará nuevas elecciones en esa Mesa dentro de los dos días siguientes.',
     ],
     pag: '24',
     asistente: 'interrupcion',
@@ -124,6 +125,17 @@ export const INCIDENCIAS: Incidencia[] = [
     pag: '6 y 25',
   },
   {
+    id: 'i-interventor-censo',
+    momento: 'Durante la votación',
+    titulo: 'Un interventor de esta Mesa no está en nuestro censo',
+    texto: [
+      'Puede votar en esta Mesa, al final y con la Mesa, si está inscrito en el censo de cualquier Mesa de la provincia; en las islas, de cualquier Mesa de la misma isla. En la lista numerada se indica la Sección y la Mesa en la que le habría correspondido votar: figuran en su nombramiento.',
+      'Si no lo está, solo puede votar por correo, en todos los procesos convocados.',
+    ],
+    pag: '10, 11 y 24',
+    asistente: 'interventores',
+  },
+  {
     id: 'i-abstencion',
     momento: 'Durante la votación',
     titulo: 'Votó solo al Congreso y vuelve para votar al Senado',
@@ -135,7 +147,7 @@ export const INCIDENCIAS: Incidencia[] = [
     momento: 'Durante la votación',
     titulo: 'Un votante reclama o hace consultas a la Mesa',
     texto: [
-      'El electorado solo puede reclamar por dudas sobre la identidad de alguien que acude a votar, o por la negativa de la Mesa a acreditar su ejercicio del derecho de voto. La Presidencia no admite más consultas que las del propio ejercicio del voto y las de interventores y apoderados. El resto se lleva a la Junta Electoral de Zona.',
+      'El electorado solo puede reclamar por dudas sobre la identidad de alguien que acude a votar, o por la negativa de la Mesa a acreditar su ejercicio del derecho de voto. La Presidencia no debe admitir ninguna consulta salvo las que se deriven del ejercicio personal del derecho de voto y las de interventores y apoderados de las candidaturas. El electorado puede presentar sus consultas ante la Junta Electoral de Zona.',
       'Si la persona insiste, la Presidencia le invita a deponer su actitud y puede pedir a los agentes de la autoridad que abandone el local.',
     ],
     pag: '25 y 26',

@@ -66,8 +66,8 @@ export function Sobres() {
         </article>
       ))}
       <p>
-        Quien recibe los sobres firma un recibo, que está entre la documentación de la Mesa. Las actas de escrutinio no van en los sobres: el original
-        se coloca en la entrada del local y la primera copia es para la persona representante de la Administración.
+        Quien recibe los sobres firma un recibo, que está entre la documentación de la Mesa. El manual no incluye las actas de escrutinio en ninguno de
+        los tres sobres: su original se coloca en la entrada del local y la primera copia es para la persona representante de la Administración.
       </p>
       <Pag pag="13 a 16 y 36" />
     </section>

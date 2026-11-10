@@ -11,7 +11,7 @@ Guía interactiva no oficial para Mesas electorales (elecciones generales del 29
 - La fuente es el manual oficial del Ministerio del Interior. Cada paso, resultado e incidencia lleva `pag` con la página del manual.
 - No afirmar nada que el manual no diga. Si el manual no resuelve un caso, se dice y se remite a la persona representante de la Administración o a la Junta Electoral de Zona.
 - La portada (`src/vistas/Portada.tsx`) se muestra antes de elegir perfil y contiene el aviso de origen (`AvisoOrigen`): no oficial, hecha con IA, puede contener errores. Ese aviso también va en «Más» y no debe quitarse ni suavizarse.
-- Auditoría frase a frase contra el manual hecha el 10/11/2026. Al tocar contenido, redactar pegado al texto del manual y no atribuir tareas a quien el manual no nombra.
+- Auditorías frase a frase contra el manual: 10/11/2026 (dos pasadas; la segunda incluye también los textos de las pantallas). Al tocar contenido, redactar pegado al texto del manual y no atribuir tareas a quien el manual no nombra.
 - La app no debe parecer oficial: sin escudos ni logotipos del Gobierno, y con el aviso de «guía no oficial».
 
 ## Arquitectura
