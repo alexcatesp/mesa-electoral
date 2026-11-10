@@ -4,7 +4,7 @@ export type Quien = Rol | 'mesa';
 
 export const ROLES: { id: Rol; nombre: string; corto: string; resumen: string }[] = [
   { id: 'presidencia', nombre: 'Presidente o presidenta', corto: 'Presidencia', resumen: 'Diriges la Mesa, recibes los sobres de voto y mantienes el orden.' },
-  { id: 'vocal', nombre: 'Vocal', corto: 'Vocal', resumen: 'Identificas a cada votante, lo buscas en el censo y lo anotas.' },
+  { id: 'vocal', nombre: 'Vocal', corto: 'Vocal', resumen: 'Compruebas la identidad de cada votante y que figura en el censo.' },
   { id: 'suplente', nombre: 'Suplente', corto: 'Suplente', resumen: 'Acudes a las 8:00 por si falta alguien. Si no, te puedes ir.' },
   { id: 'interventor', nombre: 'Interventor o interventora', corto: 'Interventor/a', resumen: 'Representas a una candidatura en esta Mesa, con voz pero sin voto.' },
   { id: 'apoderado', nombre: 'Apoderado o apoderada', corto: 'Apoderado/a', resumen: 'Representas a una candidatura y puedes entrar en cualquier Mesa.' },
@@ -89,7 +89,7 @@ export interface Asistente {
 
 export interface Incidencia {
   id: string;
-  momento: 'Al formar la Mesa' | 'Durante la votación' | 'Durante el escrutinio';
+  momento: 'Al formar la Mesa' | 'Durante la votación' | 'En el cierre y el escrutinio';
   titulo: string;
   texto: string[];
   pag: string;

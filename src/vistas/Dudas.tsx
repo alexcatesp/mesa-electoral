@@ -57,7 +57,7 @@ export function Dudas({ incidenciaAbierta }: { incidenciaAbierta?: string }) {
   useEffect(() => {
     if (incidenciaAbierta) document.getElementById(incidenciaAbierta)?.scrollIntoView({ block: 'start' });
   }, [incidenciaAbierta]);
-  const momentos = ['Al formar la Mesa', 'Durante la votación', 'Durante el escrutinio'] as const;
+  const momentos = ['Al formar la Mesa', 'Durante la votación', 'En el cierre y el escrutinio'] as const;
 
   return (
     <section className="pagina">

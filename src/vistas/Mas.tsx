@@ -4,6 +4,7 @@ import { SOBRES } from '../data/fases';
 import { ACCESIBILIDAD, ACCESIBILIDAD_GENERAL, INFORMACION, type Ficha } from '../data/info';
 import { ROLES, type Rol } from '../data/tipos';
 import { borrarTodo, useGuardado } from '../util';
+import { AvisoOrigen } from './Portada';
 
 export function Perfil({ rol, elegir }: { rol: Rol | null; elegir: (r: Rol) => void }) {
   return (
@@ -23,8 +24,8 @@ export function Perfil({ rol, elegir }: { rol: Rol | null; elegir: (r: Rol) => v
         ))}
       </div>
       <p className="nota-legal">
-        Guía no oficial, hecha a partir del manual de instrucciones del Ministerio del Interior para las elecciones a Cortes Generales de 2026. No
-        recoge ningún dato tuyo.
+        Guía no oficial, hecha con inteligencia artificial a partir del manual de instrucciones del Ministerio del Interior. Puede contener errores:
+        ante cualquier duda, consulta el manual. <a href="#/portada">Leer el aviso completo</a>
       </p>
     </section>
   );
@@ -131,13 +132,14 @@ export function Mas({ rol }: { rol: Rol }) {
         <li><a href="#/accesibilidad"><strong>Personas con discapacidad</strong><span>Cómo atender bien a cada votante y voto en braille.</span></a></li>
         <li><a href="#/info"><strong>Información general</strong><span>Derechos, orden público, interventores y apoderados.</span></a></li>
         <li><a href="#/perfil"><strong>Cambiar de perfil</strong><span>Ahora: {actual.nombre.toLowerCase()}.</span></a></li>
+        <li><a href="#/portada"><strong>Ver la portada</strong><span>Qué es esta guía y el aviso sobre su origen.</span></a></li>
       </ul>
 
       <h2>Sobre esta guía</h2>
+      <AvisoOrigen />
       <p>
-        No es una aplicación oficial. Resume y ordena el «Manual de instrucciones para las personas que integran las Mesas electorales» de las
-        elecciones a Cortes Generales del 29 de noviembre de 2026, supervisado por la Junta Electoral Central. Cada paso indica la página del
-        manual de la que sale: ante la duda, manda el manual en papel que recibiste con tu nombramiento.
+        Cuando el manual no resuelve un caso, la guía lo dice y remite a la persona representante de la Administración o a la Junta Electoral de
+        Zona, en lugar de dar una respuesta propia.
       </p>
       <p>
         Funciona sin cobertura una vez abierta. Tus marcas y el recuento se guardan solo en este dispositivo; no se envía nada a ningún servidor.

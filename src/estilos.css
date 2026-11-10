@@ -295,3 +295,16 @@ input[type='time'], input[type='number'], input[type='search'], input:not([type]
   .menu, .barra-rol, .boton, .interruptor { display: none; }
   .ahora { background: none; color: #000; }
 }
+
+/* ---------- Portada ---------- */
+.marco-portada main { padding-top: 0; }
+.portada-cabecera { padding-top: 3rem; padding-bottom: 2rem; }
+.portada-cabecera .ahora-cifra { font-size: clamp(2.25rem, 11vw, 3.75rem); line-height: 1; }
+.portada-puntos { margin-top: 1.5rem; font-size: 1.0625rem; max-width: 38rem; }
+.portada h2 { margin-top: 1.75rem; }
+.portada-enlace { margin-top: 1rem; }
+@media (min-width: 46rem) { .marco-portada main { padding-top: 2rem; } }
+
+/* Aviso de origen: no oficial y hecha con IA */
+.origen { display: grid; gap: 0.625rem; padding: 0.875rem 1rem; background: var(--hoja); border: 2px solid var(--tinta); border-left: 6px solid var(--precinto); border-radius: var(--radio); max-width: 38rem; }
+.pagina > .origen { margin-top: 0.75rem; }

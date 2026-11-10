@@ -4,6 +4,8 @@ Guía interactiva para quienes integran una Mesa electoral en las elecciones a C
 
 **Abrir la guía:** https://alejandrocatalaespi.es/elecciones
 
+> Realizada con Claude Fable 5.2, el modelo de IA generativa más avanzado que Anthropic ofrece al público hasta la fecha. Aun así, puede contener errores: ante cualquier duda, consulta el manual oficial.
+>
 > No es una aplicación oficial. Resume el «Manual de instrucciones para las personas que integran las Mesas electorales» del Ministerio del Interior, supervisado por la Junta Electoral Central. Cada paso cita la página del manual de la que sale. Ante la duda, manda el manual en papel y la Junta Electoral de Zona.
 
 <p>

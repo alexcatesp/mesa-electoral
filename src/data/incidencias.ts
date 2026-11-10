@@ -135,7 +135,7 @@ export const INCIDENCIAS: Incidencia[] = [
     momento: 'Durante la votación',
     titulo: 'Un votante reclama o hace consultas a la Mesa',
     texto: [
-      'El electorado solo puede reclamar por dudas sobre la identidad de alguien que acude a votar, o porque la Mesa le niegue acreditar que ha votado. La Presidencia no admite más consultas que las del propio ejercicio del voto y las de interventores y apoderados. El resto se lleva a la Junta Electoral de Zona.',
+      'El electorado solo puede reclamar por dudas sobre la identidad de alguien que acude a votar, o por la negativa de la Mesa a acreditar su ejercicio del derecho de voto. La Presidencia no admite más consultas que las del propio ejercicio del voto y las de interventores y apoderados. El resto se lleva a la Junta Electoral de Zona.',
       'Si la persona insiste, la Presidencia le invita a deponer su actitud y puede pedir a los agentes de la autoridad que abandone el local.',
     ],
     pag: '25 y 26',
@@ -179,7 +179,7 @@ export const INCIDENCIAS: Incidencia[] = [
   },
   {
     id: 'i-correo-sin',
-    momento: 'Durante el escrutinio',
+    momento: 'En el cierre y el escrutinio',
     titulo: 'Un voto por correo llega sin certificado de inscripción',
     texto: ['Se destruye el sobre con todo lo que contiene. No cuenta como voto válido ni como nulo.'],
     pag: '10',
@@ -187,28 +187,28 @@ export const INCIDENCIAS: Incidencia[] = [
   },
   {
     id: 'i-publico',
-    momento: 'Durante el escrutinio',
+    momento: 'En el cierre y el escrutinio',
     titulo: 'Alguien del público protesta por el recuento',
     texto: ['Quienes asisten como público no pueden formular reclamaciones ni protestas durante el escrutinio. La Presidencia ordena la expulsión inmediata de quien lo entorpezca o perturbe.'],
     pag: '26',
   },
   {
     id: 'i-examen',
-    momento: 'Durante el escrutinio',
+    momento: 'En el cierre y el escrutinio',
     titulo: 'Piden ver una papeleta',
     texto: ['Un notario, un candidato o un representante de candidatura que tenga dudas sobre el contenido de una papeleta puede pedirla para examinarla ante la Mesa.'],
     pag: '26',
   },
   {
     id: 'i-parar',
-    momento: 'Durante el escrutinio',
+    momento: 'En el cierre y el escrutinio',
     titulo: 'Queremos parar el recuento y seguir luego',
     texto: ['No se puede. El escrutinio es público y no se suspende hasta que se hayan contado todos los votos.'],
     pag: '26',
   },
   {
     id: 'i-reclamada',
-    momento: 'Durante el escrutinio',
+    momento: 'En el cierre y el escrutinio',
     titulo: 'Hay una reclamación sobre una papeleta',
     texto: [
       'La Mesa resuelve por mayoría de sus integrantes. La papeleta reclamada no se destruye: la firma cada integrante de la Mesa, se une al acta de sesión y va en el sobre n.º 1.',

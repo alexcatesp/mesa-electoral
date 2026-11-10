@@ -3,19 +3,39 @@ import { esEnsayo, useGuardado, useRuta } from './util';
 import { AsistenteVista, Dudas } from './vistas/Dudas';
 import { Jornada } from './vistas/Jornada';
 import { Accesibilidad, Informacion, Mas, Perfil, Sobres } from './vistas/Mas';
+import { Portada } from './vistas/Portada';
 import { Recuento } from './vistas/Recuento';
 
 const MENU = [
   { href: '#/', nombre: 'Ahora', rutas: ['', 'fase'] },
   { href: '#/dudas', nombre: 'Dudas', rutas: ['dudas'] },
   { href: '#/recuento', nombre: 'Recuento', rutas: ['recuento'] },
-  { href: '#/mas', nombre: 'Más', rutas: ['mas', 'sobres', 'accesibilidad', 'info', 'perfil'] },
+  { href: '#/mas', nombre: 'Más', rutas: ['mas', 'sobres', 'accesibilidad', 'info', 'perfil', 'portada'] },
 ];
 
 export function App() {
   const ruta = useRuta();
   const [rol, setRol] = useGuardado<Rol | null>('rol', null);
+  const [portadaVista, setPortadaVista] = useGuardado('portadaVista', false);
   const seccion = ruta[0] ?? '';
+
+  // La portada, con el aviso de que la guía no es oficial y está hecha con IA, va antes de todo lo demás.
+  if (!portadaVista || seccion === 'portada') {
+    return (
+      <div className="marco marco-solo marco-portada">
+        <main>
+          <Portada
+            yaTienePerfil={Boolean(rol)}
+            empezar={() => {
+              setPortadaVista(true);
+              window.location.hash = rol ? '#/' : '#/perfil';
+              window.scrollTo(0, 0);
+            }}
+          />
+        </main>
+      </div>
+    );
+  }
 
   if (!rol || seccion === 'perfil') {
     return (

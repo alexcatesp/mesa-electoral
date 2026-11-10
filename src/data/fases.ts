@@ -31,7 +31,7 @@ export const FASES: Fase[] = [
             quien: ['mesa'],
             puntos: [
               'Dieta de 75 €.',
-              'Permiso retribuido el día de la votación, si es laborable para ti.',
+              'Permiso retribuido durante el día de la votación, si es laborable.',
               'Cinco horas menos de jornada el día siguiente, si trabajas por cuenta ajena o eres personal funcionario.',
               'Protección de la Seguridad Social frente a lo que pueda ocurrirte por participar.',
             ],
@@ -52,7 +52,7 @@ export const FASES: Fase[] = [
             titulo: 'Llevar el nombramiento o las credenciales',
             quien: ['interventor', 'apoderado'],
             texto: [
-              'Interventores: entregad el nombramiento a la Mesa entre las 8:00 y las 8:30. Si llegáis con el acta de constitución ya hecha, no os darán posesión del cargo.',
+              'Interventores: entregad el nombramiento a la Mesa entre las 8:00 y las 8:30. Si os presentáis después de las 8:30, con el acta de constitución ya confeccionada, no os darán posesión del cargo.',
               'Apoderados: os identificáis con vuestras credenciales y vuestro documento de identidad.',
             ],
             pag: '4, 20 y 23',
@@ -121,7 +121,7 @@ export const FASES: Fase[] = [
               'Congreso: sobres y papeletas blancos. Senado: sepia.',
               'En la cabina, o en una mesa junto a ella, tiene que haber sobres y papeletas de todas las candidaturas, colocadas en su orden de proclamación.',
             ],
-            texto: ['Tiene que haber papeletas suficientes durante todo el día: repasadlas de vez en cuando.'],
+            texto: ['Tiene que haber un número suficiente durante toda la jornada, mientras dure la votación.'],
             pag: '5',
           },
           {
@@ -227,7 +227,7 @@ export const FASES: Fase[] = [
     toca: 'atender la votación',
     paraTi: {
       presidencia: 'Recibes cada sobre, dices el nombre del votante y «vota», y se lo devuelves para que lo meta en la urna. Mantienes el orden.',
-      vocal: 'Compruebas la identidad de cada votante, lo buscas en el censo y lo anotas en la lista numerada.',
+      vocal: 'Compruebas la identidad de cada votante y que figura en la lista del censo. Después se le anota en la lista numerada.',
       suplente: 'Si no has sustituido a nadie, tu trabajo ha terminado. Si has entrado en la Mesa, cambia tu perfil.',
       interventor: 'Puedes comprobar la identidad de los votantes y su inscripción en el censo, y formular reclamaciones. Votas al final, con la Mesa.',
       apoderado: 'Puedes entrar en cualquier local, observar la votación y formular reclamaciones. Solo votas en la Mesa donde estés censado.',
@@ -282,7 +282,7 @@ export const FASES: Fase[] = [
           {
             id: 'v-anotar',
             titulo: 'Anotarla en la lista numerada de votantes',
-            quien: ['vocal'],
+            quien: ['mesa'],
             puntos: [
               'Nombre y apellidos, en el orden en que se vota, con su número en la lista del censo.',
               'Si vota en una elección y no en la otra, marcad una «X» en la columna de la elección en la que se abstiene. Ya no podrá votar en ella más tarde.',
@@ -380,7 +380,7 @@ export const FASES: Fase[] = [
     toca: 'cerrar la votación',
     paraTi: {
       presidencia: 'Anuncias el cierre, introduces en las urnas los votos por correo y después vota la Mesa.',
-      vocal: 'Anotas los votos por correo en la lista numerada, votas y firmas la lista.',
+      vocal: 'Tras el voto por correo votas con el resto de la Mesa y firmas la lista numerada de votantes.',
       suplente: 'Si no has sustituido a nadie, tu trabajo ha terminado.',
       interventor: 'Ahora votas tú, si tienes derecho a hacerlo en esta Mesa, y firmas la lista numerada de votantes.',
       apoderado: 'Puedes presenciar el cierre y el voto por correo.',
@@ -407,7 +407,7 @@ export const FASES: Fase[] = [
           {
             id: 'z-correo',
             titulo: 'Introducir los votos por correo',
-            quien: ['presidencia', 'vocal'],
+            quien: ['presidencia'],
             puntos: [
               'Abrid uno a uno los sobres dirigidos a la Presidencia.',
               'Comprobad que cada uno trae el certificado de inscripción en el censo y el sobre o sobres de votación.',
@@ -462,7 +462,7 @@ export const FASES: Fase[] = [
     toca: 'contar los votos',
     paraTi: {
       presidencia: 'Sacas los sobres uno a uno, lees cada papeleta en voz alta y la enseñas. Luego anuncias el resultado y rellenas las actas.',
-      vocal: 'Ves cada papeleta, llevas la cuenta y firmas las actas de escrutinio y de sesión.',
+      vocal: 'La Presidencia te enseña cada papeleta que lee. Al terminar firmas las actas de escrutinio y de sesión.',
       suplente: 'Si no has sustituido a nadie, tu trabajo ha terminado.',
       interventor: 'Ves cada papeleta, puedes reclamar contra el escrutinio y firmas las actas. Puedes pedir copia.',
       apoderado: 'Ves cada papeleta, puedes reclamar contra el escrutinio y pedir copia de las actas (una por candidatura).',

@@ -22,7 +22,7 @@ export const ASISTENTES: Asistente[] = [
       midni: {
         tipo: 'pregunta',
         pregunta: '¿Ha abierto la aplicación delante de la Mesa y habéis leído su código QR con el dispositivo de la Mesa?',
-        ayuda: 'El QR tiene que generarse en ese momento. Una captura de pantalla o un QR ya abierto no sirven.',
+        ayuda: 'Únicamente vale si abre la aplicación delante de la Mesa y obtiene en ese momento el código QR temporal.',
         opciones: [
           { texto: 'Sí, el verificador lo da por bueno', ir: 'censo' },
           { texto: 'No', ir: 'midni-no' },
@@ -33,7 +33,7 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'no',
         titulo: 'Así no queda identificada',
         texto: [
-          'Con MiDNI solo vale abrir la aplicación delante de la Mesa y obtener en ese momento el código QR temporal, que comprobáis con el dispositivo de la Mesa. Puede repetirlo o enseñar un documento original.',
+          'Con MiDNI solo vale abrir la aplicación delante de la Mesa y obtener en ese momento el código QR temporal, que comprobáis con el dispositivo de la Mesa. También puede identificarse con cualquiera de los otros documentos admitidos: pasaporte o permiso de conducir, originales y con fotografía.',
         ],
         pag: '7 y 8',
       },
@@ -84,7 +84,7 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'si',
         titulo: 'Puede votar',
         texto: [
-          'La certificación os permite identificarla en la lista del censo. Antes, comprobad que no tiene una «C» de voto por correo.',
+          'La certificación os permite identificarla en la lista del censo. Como a cualquier votante, se le aplica que no puede votar si pidió el voto por correo («C» delante del nombre).',
           'Anotad el caso solo en el acta de sesión. No va en el acta de escrutinio, porque no es una persona nueva en el censo.',
         ],
         pag: '25',
@@ -127,7 +127,7 @@ export const ASISTENTES: Asistente[] = [
         puntos: [
           'Entrega su sobre cerrado a la Presidencia.',
           'La Presidencia dice su nombre en voz alta, añade «vota» y le devuelve el sobre para que lo meta en la urna.',
-          'Los vocales la anotan en la lista numerada, con su número del censo.',
+          'Se la anota en la lista numerada de votantes, con su número en la lista del censo.',
           'Si solo vota en una elección, marcad «X» en la columna de la otra.',
         ],
         pag: '9',
@@ -226,7 +226,7 @@ export const ASISTENTES: Asistente[] = [
         pregunta: '¿Qué tiene la papeleta?',
         opciones: [
           { texto: 'Nombres modificados, añadidos o tachados, o el orden cambiado', ir: 'nulo-modificada' },
-          { texto: 'Una frase, un dibujo u otra alteración hecha a propósito', ir: 'nulo-modificada' },
+          { texto: 'Una leyenda o expresión, u otra alteración voluntaria o intencionada', ir: 'nulo-modificada' },
           { texto: 'Solo una señal, cruz o aspa junto a algún candidato', ir: 'senal' },
         ],
       },
@@ -240,7 +240,8 @@ export const ASISTENTES: Asistente[] = [
           { texto: 'Una papeleta suelta, sin sobre', ir: 'nulo-sinsobre' },
           { texto: 'Sobre o papeleta que no son del modelo oficial', ir: 'nulo-modelo' },
           { texto: 'Un sobre alterado', ir: 'nulo-alterado' },
-          { texto: 'Una papeleta con nombres cambiados, tachados o con frases', ir: 'nulo-modificada' },
+          { texto: 'Una papeleta con nombres modificados, añadidos o tachados, o con leyendas', ir: 'nulo-modificada' },
+          { texto: 'Un voto a una candidatura legalmente retirada', ir: 'blanco-retirada' },
           { texto: 'Otra cosa', ir: 'otro-caso' },
         ],
       },
@@ -248,7 +249,7 @@ export const ASISTENTES: Asistente[] = [
         tipo: 'pregunta',
         pregunta: '¿Cuántos candidatos ha marcado?',
         ayuda:
-          'El máximo es 3 en las provincias peninsulares. Es 2 en Gran Canaria, Tenerife, Mallorca, Ceuta y Melilla. Es 1 en Menorca, Ibiza, Formentera, Fuerteventura, La Gomera, El Hierro, Lanzarote y La Palma.',
+          'El máximo general es 3. Es 2 en Gran Canaria, Tenerife, Mallorca, Ceuta y Melilla. Es 1 en Menorca, Ibiza, Formentera, Fuerteventura, La Gomera, El Hierro, Lanzarote y La Palma.',
         opciones: [
           { texto: 'El máximo permitido aquí, o menos', ir: 'valido-senado' },
           { texto: 'Más del máximo', ir: 'nulo-senado' },
@@ -257,13 +258,14 @@ export const ASISTENTES: Asistente[] = [
       'otro-caso': {
         tipo: 'resultado',
         veredicto: 'ojo',
-        titulo: 'El manual no recoge ese caso',
+        titulo: 'Este asistente no cubre ese caso',
         texto: [
-          'Lo decide la Mesa. Podéis consultar a la persona representante de la Administración o a la Junta Electoral de Zona. Si alguien protesta o reclama, la Mesa resuelve por mayoría y la papeleta no se destruye: se firma, se une al acta de sesión y va en el sobre n.º 1.',
+          'Repasad la lista de votos en blanco y nulos de la página 12 del manual. Si el caso no está, esta guía no puede deciros qué hacer: consultad a la persona representante de la Administración o a la Junta Electoral de Zona.',
+          'Si alguien protesta o reclama, la Mesa resuelve por mayoría de sus integrantes y la papeleta no se destruye: se firma, se une al acta de sesión y va en el sobre n.º 1.',
         ],
-        pag: '13',
+        pag: '12 y 13',
       },
-      valido: { tipo: 'resultado', veredicto: 'si', titulo: 'Voto válido', texto: ['Cuenta para la candidatura de la papeleta.'], pag: '11 y 12' },
+      valido: { tipo: 'resultado', veredicto: 'si', titulo: 'Voto válido', texto: ['Es un voto a la candidatura de la papeleta.'], pag: '11 y 12' },
       'valido-varias': {
         tipo: 'resultado',
         veredicto: 'si',
@@ -275,7 +277,7 @@ export const ASISTENTES: Asistente[] = [
         tipo: 'resultado',
         veredicto: 'si',
         titulo: 'Voto válido',
-        texto: ['Sumad un voto a cada candidato o candidata marcado. La plantilla auxiliar del Senado os ayuda a llevar la cuenta.'],
+        texto: ['Es un voto para cada candidato o candidata marcado. Para el recuento del Senado tenéis una plantilla auxiliar entre la documentación.'],
         pag: '6 y 12',
       },
       senal: {
@@ -284,11 +286,11 @@ export const ASISTENTES: Asistente[] = [
         titulo: 'Válido, salvo que la marca altere la papeleta',
         texto: [
           'Una señal, cruz o aspa al lado de algún candidato no anula el voto, mientras no tenga entidad suficiente para considerar que se ha alterado la configuración de la papeleta o que expresa reproche a algún candidato o a su formación política.',
-          'Lo decide la Mesa. Si hay reclamación, resuelve por mayoría y la papeleta se conserva.',
+          'Si hay protesta o reclamación, la Mesa resuelve por mayoría de sus integrantes y la papeleta no se destruye.',
         ],
         pag: '12 y 13',
       },
-      'blanco-vacio': { tipo: 'resultado', veredicto: 'info', titulo: 'Voto en blanco', texto: ['Un sobre sin papeleta es un voto en blanco. Se cuenta aparte.'], pag: '12' },
+      'blanco-vacio': { tipo: 'resultado', veredicto: 'info', titulo: 'Voto en blanco', texto: ['Un sobre sin papeleta es un voto en blanco. Los votos en blanco se contabilizan por separado.'], pag: '12' },
       'blanco-retirada': {
         tipo: 'resultado',
         veredicto: 'info',
@@ -373,7 +375,7 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'ojo',
         titulo: 'Consultadlo antes de hacer nada',
         texto: [
-          'El manual pide comprobar la inscripción, pero no dice qué hacer si la persona no está en vuestro censo. No lo metáis en la urna ni lo destruyáis todavía: preguntad a la persona representante de la Administración o a la Junta Electoral de Zona.',
+          'El manual pide comprobar la inscripción, pero no dice qué hacer si la persona no está en vuestro censo. Esta guía no puede resolverlo: antes de hacer nada con el sobre, consultad a la persona representante de la Administración o a la Junta Electoral de Zona.',
         ],
         pag: '10',
       },
@@ -382,9 +384,9 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'si',
         titulo: 'A la urna, sin abrir',
         puntos: [
-          'La Presidencia introduce cada sobre de votación en su urna: el blanco en la del Congreso, el sepia en la del Senado.',
+          'La Presidencia introduce cada sobre de votación en la urna que le corresponde (los sobres del Congreso son blancos y los del Senado, sepia).',
           'Anotad a la persona en la lista numerada de votantes.',
-          'Si el envío viene del extranjero y trae una «solicitud de reintegro de gastos», guardadla: va en el sobre n.º 1.',
+          'Si el sobre se ha recibido desde el extranjero y contiene una «solicitud de reintegro de gastos», guardadla: va en el sobre n.º 1.',
         ],
         pag: '10',
       },
@@ -406,10 +408,11 @@ export const ASISTENTES: Asistente[] = [
       },
       hora: {
         tipo: 'pregunta',
-        pregunta: '¿Ha llegado antes de las 8:30 y sin que esté hecha el acta de constitución?',
+        pregunta: '¿Se presenta después de las 8:30, con el acta de constitución ya confeccionada?',
+        ayuda: 'Los interventores presentan su nombramiento entre las 8:00 y las 8:30.',
         opciones: [
-          { texto: 'Sí', ir: 'dos' },
-          { texto: 'No, el acta ya está confeccionada', ir: 'tarde' },
+          { texto: 'No', ir: 'dos' },
+          { texto: 'Sí', ir: 'tarde' },
         ],
       },
       tarde: {
@@ -455,7 +458,7 @@ export const ASISTENTES: Asistente[] = [
           'Incluid su nombre en el acta de constitución, que firmará.',
           'Devolvedle el nombramiento.',
         ],
-        texto: ['Una sola acreditación le vale para las dos elecciones del día.'],
+        texto: ['Basta una sola acreditación para todas las elecciones del día, si su formación participa en ellas.'],
         pag: '4 y 23',
       },
       dudas: {
@@ -495,7 +498,7 @@ export const ASISTENTES: Asistente[] = [
         tipo: 'resultado',
         veredicto: 'si',
         titulo: 'Vota aquí, al final',
-        texto: ['Vota junto a los integrantes de la Mesa, después de introducir los votos por correo. Se le anota en la lista numerada como a cualquier votante.'],
+        texto: ['Vota a continuación del voto por correo, cuando votan las personas que integran la Mesa.'],
         pag: '10',
       },
       circunscripcion: {
@@ -513,7 +516,7 @@ export const ASISTENTES: Asistente[] = [
         veredicto: 'si',
         titulo: 'Vota aquí, al final',
         texto: [
-          'Vota junto a la Mesa, después del voto por correo. En la lista numerada de votantes, indicad la Sección y la Mesa donde le habría correspondido votar: están en su nombramiento.',
+          'Vota a continuación del voto por correo, cuando votan las personas que integran la Mesa. En la lista numerada de votantes, indicad la Sección y la Mesa donde le habría correspondido votar: están en su nombramiento.',
           'Este voto se suma al máximo de votantes posibles de la Mesa cuando cuadréis el escrutinio.',
         ],
         pag: '10 a 12',
@@ -546,7 +549,7 @@ export const ASISTENTES: Asistente[] = [
         tipo: 'resultado',
         veredicto: 'si',
         titulo: 'Entra su suplente',
-        texto: ['Cada titular tiene dos suplentes designados precisamente para esto. El suplente ocupa el puesto y la Mesa se constituye con normalidad.'],
+        texto: ['Como garantía de la constitución de la Mesa, cada titular tiene designados dos suplentes. El suplente presente ocupa el puesto.'],
         pag: '3',
       },
       presidencia: {
@@ -580,7 +583,7 @@ export const ASISTENTES: Asistente[] = [
       diez: {
         tipo: 'resultado',
         veredicto: 'no',
-        titulo: 'Hoy no se vota en esta Mesa',
+        titulo: 'La Junta convocará una nueva votación',
         texto: [
           'Comunicadlo a la Junta Electoral de Zona. Convocará una nueva votación dentro de los dos días siguientes, fijará la convocatoria en la puerta del local y hará nuevos nombramientos para la Mesa.',
         ],

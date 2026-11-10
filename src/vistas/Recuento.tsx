@@ -127,7 +127,7 @@ export function Recuento() {
         <label className="campo">
           <span>Máximo de candidatos que se pueden marcar aquí</span>
           <select value={datos.maxSenado} onChange={(e) => setDatos((d) => ({ ...d, maxSenado: Number(e.target.value) as 1 | 2 | 3 }))}>
-            <option value={3}>3: provincias peninsulares</option>
+            <option value={3}>3: regla general</option>
             <option value={2}>2: Gran Canaria, Tenerife, Mallorca, Ceuta y Melilla</option>
             <option value={1}>1: Menorca, Ibiza, Formentera, Fuerteventura, La Gomera, El Hierro, Lanzarote y La Palma</option>
           </select>
