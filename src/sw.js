@@ -1,6 +1,7 @@
 // Service worker: deja la guía disponible sin cobertura.
 // Esta plantilla la completa vite.config.ts al compilar (versión y lista de archivos).
 // - Al instalarse guarda toda la aplicación, para que funcione sin conexión desde la primera visita.
+// - Al instalarse descarga todo de nuevo, sin fiarse de la caché HTTP del navegador.
 // - Páginas: primero la red (para recibir correcciones) y, si falla, la copia guardada.
 // - Recursos con huella en el nombre (/assets/): primero la copia guardada.
 const CACHE = 'mesa-electoral-__VERSION__';
@@ -11,7 +12,7 @@ self.addEventListener('install', (e) => {
   e.waitUntil(
     caches
       .open(CACHE)
-      .then((c) => c.addAll([BASE, ...ARCHIVOS.map((a) => BASE + a)]))
+      .then((c) => c.addAll([BASE, ...ARCHIVOS.map((a) => BASE + a)].map((u) => new Request(u, { cache: 'reload' }))))
       .then(() => self.skipWaiting())
   );
 });
@@ -40,7 +41,8 @@ self.addEventListener('fetch', (e) => {
   } else {
     // ignoreSearch: «?ahora=…» u otros parámetros no impiden encontrar la página guardada
     e.respondWith(
-      fetch(e.request)
+      // no-store: sin esto el navegador puede dar por buena una copia antigua de la página durante mucho tiempo
+      fetch(url.href, { cache: 'no-store' })
         .then(guardar)
         .catch(() => caches.match(e.request, { ignoreSearch: true, ignoreVary: true }).then((r) => r || caches.match(BASE)))
     );

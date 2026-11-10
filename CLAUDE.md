@@ -20,7 +20,7 @@ Guía interactiva no oficial para Mesas electorales (elecciones generales del 29
 - Estado en `localStorage` con prefijo `mesa29n:` (`useGuardado`): `portadaVista`, `rol`, `hechos`, `soloMio`, `interrupciones`, `recuento`, `sobres`.
 - `faseQueToca` decide la fase por el reloj; pasadas las 20:00 (más la prórroga) avanza según los pasos marcados. `?ahora=2026-11-29T08:42` simula la hora.
 - El historial de deshacer del recuento vive dentro del mismo estado `recuento`, para que cada pulsación sea atómica. Deshacer recupera recuentos, no la lista de nombres (añadir o quitar una línea no se deshace).
-- PWA: `src/sw.js` es una plantilla; el plugin `servicioSinConexion` de `vite.config.ts` genera `dist/sw.js` con la lista de archivos y una versión derivada de ella. Al instalarse guarda toda la app (funciona sin cobertura desde la primera visita). Páginas: red primero; `/assets/`: caché primero. Solo se registra en producción; para probarlo: `npm run build && npx vite preview` (puerto 4183).
+- PWA: `src/sw.js` es una plantilla; el plugin `servicioSinConexion` de `vite.config.ts` genera `dist/sw.js` con la lista de archivos y una versión derivada de ella. Al instalarse guarda toda la app (funciona sin cobertura desde la primera visita). Páginas: red primero y sin caché HTTP (`no-store`); `/assets/`: caché primero. Solo se registra en producción; para probarlo: `npm run build && npx vite preview` (puerto 4183).
 - `main.tsx` redirige `/elecciones` a `/elecciones/`: sin la barra final la página queda fuera del ámbito del service worker.
 - Un `Bloque` con `soloPara` solo se muestra a esos perfiles (bloques «Lo que puedes hacer tú» de interventores y apoderados); no entran en el buscador.
 
